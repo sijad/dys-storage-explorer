@@ -2,10 +2,7 @@ import { install, defineConfig, injectGlobal } from "@twind/core";
 import presetAutoprefix from "@twind/preset-autoprefix";
 import presetTailwind from "@twind/preset-tailwind/base";
 
-import {
-  indigoDark as brand,
-  slateDark as gray,
-} from "@twind/preset-radix-ui/colors";
+import { indigoDark as brand } from "@twind/preset-radix-ui/colors";
 
 const config = defineConfig({
   presets: [
@@ -13,7 +10,6 @@ const config = defineConfig({
     presetTailwind({
       colors: {
         brand,
-        gray,
         white: "white",
       },
     }),
@@ -24,7 +20,7 @@ install(config);
 
 injectGlobal`
   body, html {
-    @apply bg-brand-1 text-gray-11;
+    @apply bg-brand-1 text-brand-11;
   }
 
   body {

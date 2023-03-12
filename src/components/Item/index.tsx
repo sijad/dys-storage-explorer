@@ -20,7 +20,12 @@ export default function Item({
 
   useEffect(() => {
     try {
-      setJsonHTML(formatHighlight(JSON.parse(_data), { keyColor: "gray" }));
+      setJsonHTML(
+        formatHighlight(JSON.parse(_data), {
+          keyColor: "gray",
+          stringColor: "lightgray",
+        })
+      );
     } catch {
       // do nothing
     }
@@ -30,7 +35,7 @@ export default function Item({
     <div className={tx`my-6`}>
       <Path prefix={prefix} path={item.index} onClick={onPathClick} />
       <div
-        className={tx`my-2 bg-brand-2 border-1 border-brand-6 max-w-full overflow-x-auto`}
+        className={tx`my-2 bg-brand-2 border-1 border-brand-4 max-w-full overflow-x-auto`}
       >
         {jsonHTML ? (
           <pre

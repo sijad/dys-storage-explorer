@@ -28,12 +28,12 @@ export default function Path({ path, onClick }: PathProps): JSX.Element {
   }, []);
 
   return (
-    <ul className={tx`flex space-x-1 overflow-x-auto text-sm`}>
+    <ul className={tx`flex space-x-1 overflow-x-auto text-sm text-brand-11`}>
       {paths.map(({ path, name }, i) => {
         return (
           <li key={i} className={tx`flex`}>
             <button
-              className={tx`inline text-brand-11 font-medium hover:underline`}
+              className={tx`inline font-medium hover:underline`}
               type="button"
               onClick={() => {
                 onClick(path);
@@ -43,7 +43,7 @@ export default function Path({ path, onClick }: PathProps): JSX.Element {
               {name}
             </button>
             {i < paths.length - 1 ? (
-              <span className={tx`ml-1 text-brand-8`}>/</span>
+              <span className={tx`ml-1 opacity-75`}>/</span>
             ) : null}
           </li>
         );

@@ -22,8 +22,12 @@ export default function Item({
     try {
       setJsonHTML(
         formatHighlight(JSON.parse(_data), {
-          keyColor: "gray",
-          stringColor: "lightgray",
+          keyColor: "#9876AA",
+          numberColor: "#6897BB",
+          stringColor: "#6A8759",
+          trueColor: "#CC7832",
+          falseColor: "#CC7832",
+          nullColor: "#CC7832",
         })
       );
     } catch {
@@ -35,7 +39,7 @@ export default function Item({
     <div className={tx`my-6`}>
       <Path prefix={prefix} path={item.index} onClick={onPathClick} />
       <div
-        className={tx`my-2 bg-brand-2 border-1 border-brand-4 max-w-full overflow-x-auto`}
+        className={tx`my-2 bg-brand-2 border-1 border-brand-4 max-w-full overflow-x-auto text-white`}
       >
         {jsonHTML ? (
           <pre

@@ -28,7 +28,9 @@ export default function Path({ path, onClick }: PathProps): JSX.Element {
   }, []);
 
   return (
-    <ul className={tx`flex space-x-1 overflow-x-auto text-sm text-brand-11`}>
+    <ul
+      className={tx`flex space-x-1 overflow-x-auto text-sm text-brand-11 whitespace-nowrap`}
+    >
       {paths.map(({ path, name }, i) => {
         return (
           <li key={i} className={tx`flex`}>

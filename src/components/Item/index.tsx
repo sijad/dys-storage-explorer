@@ -39,7 +39,7 @@ export default function Item({
     <div className={tx`my-6`}>
       <Path prefix={prefix} path={item.index} onClick={onPathClick} />
       <div
-        className={tx`my-2 bg-brand-2 border-1 border-brand-4 max-w-full overflow-x-auto text-white`}
+        className={tx`my-2 bg-brand-2 border-1 border-brand-4 max-w-full overflow-x-auto text-[lightgray]`}
       >
         {jsonHTML ? (
           <pre

@@ -1,18 +1,8 @@
-from urllib.parse import parse_qs
-
 <%- script -%>
 
 def application(environ, start_response):
-    qs = parse_qs(environ["QUERY_STRING"])
-    name_list = qs.get("name")
-    if name_list:
-        name = name_list[0]
-    else:
-        name = "World"
-
     start_response("200 ok", [("Content-Type", "text/html")])
 
     return [
         """<%- output.replaceAll('"""', '\\"\\"\\"') -%>""".encode()
     ]
-

@@ -5,8 +5,6 @@ import Item from "./components/Item";
 import Spinner from "./components/Spinner";
 import useInfiniteStoragePrefix from "./dys/hooks";
 import useDebounce from "./hooks/useDebounce";
-import ArrowsUpDownIcon from "./icons/ArrowsUpDown";
-import HomeIcon from "./icons/Home";
 
 const params = new URLSearchParams(window.location.search);
 
@@ -40,23 +38,12 @@ function App(): JSX.Element {
     <div>
       <div className={tx`relative mt-14`}>
         <div className={tx`p-6 px-4 mx-auto w-full max-w-2xl bg-brand-1`}>
-          <div className={tx`flex mb-8`}>
-            <div>
-              <button
-                type="button"
-                title="Go to Root"
-                className={tx`h-full w-10 flex items-center justify-center p-2 bg-brand-9 hover:bg-brand-10 text-white`}
-                onClick={() => {
-                  setPrefix("");
-                }}
-              >
-                <HomeIcon size={4} />
-              </button>
-            </div>
+          <div className={tx`bg-brand-1 flex mb-8 sticky inset-0 z-10`}>
             <label className={tx`text-brand-11 w-full`}>
               <span className={tx`sr-only`}>Prefix</span>
               <input
                 className={tx`bg-brand-3 text-brand-12 p-2 block w-full text-base`}
+                placeholder="Prefix..."
                 onChange={(e) => handleChangePrefix(e.target.value)}
                 value={prefix}
               />
@@ -64,15 +51,36 @@ function App(): JSX.Element {
             <div>
               <button
                 type="button"
-                title="Toggle Reversed Results"
-                className={tx`h-full w-10 flex items-center justify-center p-2 bg-brand-9 hover:bg-brand-10 text-white ${
-                  !reversed && "opacity-50"
-                }`}
+                title="Up One Level"
+                className={tx`h-full w-10 flex items-center justify-center p-2 bg-brand-9 hover:bg-brand-10 text-white`}
+                onClick={() => {
+                  setPrefix((prefix) => {
+                    const p = prefix
+                      .replace(/\/$/, "")
+                      .split("/")
+                      .map((i) => i + "/");
+                    p.pop();
+                    return p.join("");
+                  });
+                }}
+              >
+                <i className={"ph-fill ph-arrow-elbow-right-up"} />
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                title="Toggle Reversed"
+                className={tx`h-full w-10 flex items-center justify-center p-2 bg-brand-9 hover:bg-brand-10 text-white`}
                 onClick={() => {
                   setReversed((r) => !r);
                 }}
               >
-                <ArrowsUpDownIcon size={4} />
+                <i
+                  className={`ph-fill ph-sort-${
+                    reversed ? "ascending" : "descending"
+                  }`}
+                />
               </button>
             </div>
           </div>

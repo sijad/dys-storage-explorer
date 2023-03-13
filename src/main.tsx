@@ -2,18 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import "./twind";
-import { QueryClient, QueryClientProvider } from "react-query";
-import NodeInfoProvider from "./contexts/NodeInfo";
+import { QueryClientProvider } from "react-query";
+import { init } from "./dys";
+import { queryClient } from "./queries";
 
-const queryClient = new QueryClient();
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <NodeInfoProvider>
+init?.().then(() => {
+  ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
         <App />
-      </NodeInfoProvider>
-    </QueryClientProvider>
-  </React.StrictMode>
-);
+      </QueryClientProvider>
+    </React.StrictMode>
+  );
+});

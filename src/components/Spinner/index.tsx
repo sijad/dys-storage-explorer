@@ -1,13 +1,7 @@
-import { tx } from "@twind/core";
-
-interface SpinnerProps {
-  size: number;
-}
-
-export default function Spinner({ size }: SpinnerProps): JSX.Element {
+export default function Spinner(): JSX.Element {
   return (
     <svg
-      className={tx`w-${size} h-${size} text-white animate-spin`}
+      className={`w-8 h-8 text-white animate-spin`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

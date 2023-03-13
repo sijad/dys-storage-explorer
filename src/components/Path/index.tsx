@@ -1,4 +1,3 @@
-import { tx } from "@twind/core";
 import { useEffect, useState } from "react";
 
 interface PathProps {
@@ -25,31 +24,28 @@ export default function Path({ path, onClick }: PathProps): JSX.Element {
     // newPaths.unshift({ path: "", name: "ROOT" });
 
     setPaths(newPaths);
-  }, []);
+  }, [path]);
 
   return (
-    <ul
-      className={tx`flex space-x-1 overflow-x-auto text-sm text-brand-11 whitespace-nowrap`}
-    >
-      {paths.map(({ path, name }, i) => {
-        return (
-          <li key={i} className={tx`flex`}>
-            <button
-              className={tx`inline font-medium hover:underline`}
-              type="button"
-              onClick={() => {
-                onClick(path);
-              }}
-            >
-              <span className={tx`sr-only`}>Go to Root</span>
-              {name}
-            </button>
-            {i < paths.length - 1 ? (
-              <span className={tx`ml-1 opacity-75`}>/</span>
-            ) : null}
-          </li>
-        );
-      })}
-    </ul>
+    <div className="text-sm breadcrumbs">
+      <ul>
+        {paths.map(({ path, name }, i) => {
+          return (
+            <li key={i}>
+              <button
+                type="button"
+                className={`hover:underline`}
+                onClick={() => {
+                  onClick(path);
+                }}
+              >
+                <span className={`sr-only`}>Go to Root</span>
+                {name}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
